@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import './menu.less'
 
 // This is the data we will be using, study it but don't change anything, yet.
@@ -9,7 +10,32 @@ let menuItems = [
   'Music',
   'Log Out'
 ];
+const menuMaker = function (array) {
+  const menuContainer = document.createElement('div');
+  const menuList = document.createElement('ul');
 
+  menuContainer.appendChild(menuList);
+
+  menuContainer.classList.add('menu');
+
+array.forEach(item => {
+  const linkText = document.createElement('li');
+  linkText.textContent = item;
+  menuList.appendChild(linkText);
+})
+
+const menuButton = document.querySelector('.menu-button');
+
+menuButton.addEventListener('click', evt => {
+ menuContainer.classList.toggle('menu--open');
+})
+return menuContainer;
+
+}
+
+
+const header = document.querySelector('.header');
+header.appendChild(menuMaker(menuItems));
 /*
   Step 1: Write a component called 'menuMaker' to create a menu like the markup below:
 
